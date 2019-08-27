@@ -1,0 +1,199 @@
+<div class="editor-row">
+
+    <div class="section gf-form-group">
+        <h5 class="section-heading">legend</h5>
+        <!-- legend.show -->
+        <div class="gf-form" checked="ctrl.panel.echarts.option.legend.show" on-change="ctrl.refresh()">
+            <label for="check-legend-show" class="gf-form-label width-7">show</label>
+            <div class="gf-form-switch ">
+                <input id="check-legend-show" type="checkbox" ng-model="ctrl.panel.echarts.option.legend.show"
+                    ng-change="ctrl.refresh()" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <label for="check-legend-show" data-on="Yes" data-off="No"></label>
+            </div>
+        </div>
+        <div ng-show="ctrl.panel.echarts.option.legend.show">
+            <div class="gf-form">
+                <label class="gf-form-label width-7">type</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.legend.type"
+                        ng-options="i for i in ['plain','scroll']" ng-change="ctrl.refresh()"></select>
+                </div>
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label width-7">left</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.legend.left"
+                        ng-options="i for i in ['auto','left','center','right']" ng-change="ctrl.refresh()"></select>
+                </div>
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label width-7">top</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.legend.top"
+                        ng-options="i for i in ['auto','top','middle','bottom']" ng-change="ctrl.refresh()"></select>
+                </div>
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label width-7">align</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.legend.align"
+                        ng-options="i for i in ['auto','left','right']" ng-change="ctrl.refresh()"></select>
+                </div>
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label width-7">orient</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.legend.orient"
+                        ng-options="i for i in ['horizontal','vertical']" ng-change="ctrl.refresh()"></select>
+                </div>
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label width-7">icon</label>
+                <div class="gf-form-select-wrapper">
+                    <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.legend.icon"
+                        ng-options="i for i in ['circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none']"
+                        ng-change="ctrl.refresh()"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section gf-form-group">
+        <h5 class="section-heading">grid</h5>
+        <!-- grid.left -->
+        <div class="gf-form" label-class="width-7">
+            <label class="gf-form-label width-7">left</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.grid.left" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.grid.left" placeholder="10%">
+        </div>
+        <!-- grid.top -->
+        <div class="gf-form" label-class="width-7">
+            <label class="gf-form-label width-7">top</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.grid.top" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.grid.top" placeholder="60">
+        </div>
+        <!-- grid.right -->
+        <div class="gf-form" label-class="width-7">
+            <label class="gf-form-label width-7">right</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.grid.right" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.grid.right" placeholder="10%">
+        </div>
+        <!-- grid.bottom -->
+        <div class="gf-form" label-class="width-7">
+            <label class="gf-form-label width-7">bottom</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.grid.bottom" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.grid.bottom" placeholder="60">
+        </div>
+        <!-- grid.containLabel -->
+        <div class="gf-form" label="Show" label-class="width-7" checked="ctrl.panel.echarts.option.grid.containLabel"
+            on-change="ctrl.refresh()">
+            <label for="check-grid-containLabel" class="gf-form-label width-7 pointer">containLabel</label>
+            <div class="gf-form-switch ">
+                <input id="check-grid-containLabel" type="checkbox"
+                    ng-model="ctrl.panel.echarts.option.grid.containLabel" ng-change="ctrl.refresh()"
+                    class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <label for="check-grid-containLabel" data-on="Yes" data-off="No"></label>
+            </div>
+        </div>
+    </div>
+
+    <!-- X 轴配置 -->
+    <div class="section gf-form-group" ng-show="ctrl.panel.echarts.option.xAxis">
+        <h5 class="section-heading">xAxis</h5>
+        <!-- xAxis.name -->
+        <div class="gf-form">
+            <label class="gf-form-label width-8">name</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.xAxis.name" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.xAxis.name">
+        </div>
+        <!-- xAxis.nameGap -->
+        <div class="gf-form">
+            <label class="gf-form-label width-8">nameGap</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.xAxis.nameGap" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.xAxis.nameGap" placeholder="15">
+        </div>
+        <!-- xAxis.splitLine.show -->
+        <div class="gf-form" checked="ctrl.panel.echarts.option.xAxis.splitLine.show" on-change="ctrl.refresh()">
+            <label for="check-xAxis-solitLine-show" class="gf-form-label width-8">splitLine.show</label>
+            <div class="gf-form-switch ">
+                <input id="check-xAxis-solitLine-show" type="checkbox"
+                    ng-model="ctrl.panel.echarts.option.xAxis.splitLine.show" ng-change="ctrl.refresh()"
+                    class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <label for="check-xAxis-solitLine-show" data-on="Yes" data-off="No"></label>
+            </div>
+        </div>
+        <div class="gf-form" ng-if="ctrl.panel.echarts.option.xAxis.splitLine.show">
+            <label class="gf-form-label width-8">lineStyle.type</label>
+            <div class="gf-form-select-wrapper">
+                <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.xAxis.splitLine.lineStyle.type"
+                    ng-options="i for i in ['solid','dashed','dotted']" ng-change="ctrl.refresh()"></select>
+            </div>
+        </div>
+        <div class="gf-form" ng-if="ctrl.panel.echarts.option.xAxis.splitLine.show">
+            <label class="gf-form-label width-8">lineStyle.opacity</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.xAxis.splitLine.lineStyle.opacity" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.xAxis.splitLine.lineStyle.opacity" placeholder="1">
+        </div>
+    </div>
+    <!-- Y 轴配置 -->
+    <div class="section gf-form-group" ng-show="ctrl.panel.echarts.option.yAxis">
+        <h5 class="section-heading">yAxis</h5>
+        <!-- yAxis.name -->
+        <div class="gf-form">
+            <label class="gf-form-label width-8">name</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.yAxis.name" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.yAxis.name">
+        </div>
+        <!-- yAxis.nameGap -->
+        <div class="gf-form">
+            <label class="gf-form-label width-8">nameGap</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.yAxis.nameGap" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.yAxis.nameGap" placeholder="15">
+        </div>
+        <!-- yAxis.splitLine.show -->
+        <div class="gf-form" checked="ctrl.panel.echarts.option.yAxis.splitLine.show" on-change="ctrl.refresh()">
+            <label for="check-yAxis-solitLine-show" class="gf-form-label width-8">splitLine.show</label>
+            <div class="gf-form-switch ">
+                <input id="check-yAxis-solitLine-show" type="checkbox"
+                    ng-model="ctrl.panel.echarts.option.yAxis.splitLine.show" ng-change="ctrl.refresh()"
+                    class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <label for="check-yAxis-solitLine-show" data-on="Yes" data-off="No"></label>
+            </div>
+        </div>
+        <div class="gf-form" ng-if="ctrl.panel.echarts.option.yAxis.splitLine.show">
+            <label class="gf-form-label width-8">lineStyle.type</label>
+            <div class="gf-form-select-wrapper">
+                <select class="gf-form-input" ng-model="ctrl.panel.echarts.option.yAxis.splitLine.lineStyle.type"
+                    ng-options="i for i in ['solid','dashed','dotted']" ng-change="ctrl.refresh()"></select>
+            </div>
+
+        </div>
+        <div class="gf-form" ng-if="ctrl.panel.echarts.option.yAxis.splitLine.show">
+            <label class="gf-form-label width-8">lineStyle.opacity</label>
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.yAxis.splitLine.lineStyle.opacity" ng-change="ctrl.refresh()"
+                ng-value="ctrl.panel.echarts.option.yAxis.splitLine.lineStyle.opacity" placeholder="1">
+        </div>
+
+
+    </div>
+
+    <div class="section gf-form-group" ng-show="ctrl.panel.echarts.option.color">
+        <h5 class="section-heading">color</h5>
+        <div class="gf-form" ng-repeat="(index,c) in ctrl.panel.echarts.option.series track by $index">
+            <input type="text" class="gf-form-input max-width-6 ng-valid ng-empty ng-dirty ng-valid-number ng-touched"
+                ng-model="ctrl.panel.echarts.option.color[$index]" ng-change="ctrl.refresh()">
+        </div>
+    </div>
+
+</div>

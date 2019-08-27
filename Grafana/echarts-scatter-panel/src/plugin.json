@@ -1,0 +1,27 @@
+{
+  "type": "panel",
+  "name": "Echarts Scatter Panel",
+  "id": "echarts-scatter-panel",
+  "info": {
+    "description": "Echarts Scatter Panel",
+    "author": {
+      "name": "Advantech",
+      "url": "http://grafana.com"
+    },
+    "keywords": [
+      "panel"
+    ],
+    "logos": {
+      "small": "https://www.echartsjs.com/images/favicon.png",
+      "large": "https://www.echartsjs.com/images/favicon.png"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "2.0.3",
+    "updated": "2019-6-14"
+  },
+  "dependencies": {
+    "grafanaVersion": "5.0",
+    "plugins": []
+  }
+}

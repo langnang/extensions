@@ -1,0 +1,11 @@
+{
+  "name": "echarts-scatter-panel",
+  "description": "Echarts Scatter Panel",
+  "main": "src/main.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {}
+}
