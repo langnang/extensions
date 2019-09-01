@@ -1,0 +1,68 @@
+.mapcontainer {
+  overflow: hidden;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+td {
+  padding:6px 15px;
+  line-height: 21px;
+}
+
+.legend {
+  line-height: 18px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-item {
+  white-space: nowrap;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+.leaflet-top.leaflet-left, .leaflet-bottom.leaflet-left, .leaflet-bottom.leaflet-right {
+  z-index: 1000;
+}
+
+/* li.na add start at 2018.11.15 */
+.leaflet-top-right-scroll{
+  background-color:rgba(22,23,25,.8);
+  overflow:auto;
+  pointer-events:auto;
+}
+/* li.na add end at 2018.11.15 */
+
+.side-display-space {
+  height:1.7vw;
+  background-color:rgba(0,0,0,0);
+}
+.side-info-container {
+  width: 18vw;
+}
+/*.card-caption {
+  height:1.3vw;
+  width:100%;
+  vertical-align: middle;
+  line-height: 1.3vw;
+  text-align:left; 
+  background-color:rgba(30, 30, 30, 0.8);
+  font-size:0.6vw;
+}*/

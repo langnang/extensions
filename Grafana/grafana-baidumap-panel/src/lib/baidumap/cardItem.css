@@ -1,0 +1,11 @@
+.BMap_bubble_content table {
+    width: 100%;
+}
+
+.BMap_bubble_content tr>td:nth-child(1) {
+    text-align: left;
+}
+
+.BMap_bubble_content tr>td:nth-child(2) {
+    text-align: right;
+}

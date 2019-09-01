@@ -1,0 +1,2 @@
+"use strict";System.register([],function(a,b){var c;return{setters:[],execute:function(){a("myLines",c=[{type:"LineString",coordinates:[[-100,40],[-105,45],[-110,55]]},{type:"LineString",coordinates:[[-105,40],[-110,45],[-115,55]]}]),a("myLines",c)}}});
+//# sourceMappingURL=temp.js.map

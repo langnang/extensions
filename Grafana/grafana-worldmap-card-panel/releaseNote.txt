@@ -1,0 +1,21 @@
+Release Update - May 4, 2018
+
+# what's New 
+* User can determine Ocean color and boundary color.
+* Each spot will be added through 'Add Card' button in WISE-PaaS tag instead of Metrics tag. 
+* Each Card should have a unique title.
+* Each Card should have a valid latitude and longitude.
+* When click on the spot, the dashboard will link to the url in the Addlink text box.
+* The Circle Color define the spot color
+* Side Display check box define the side card should be display or not.
+* Thresholds check box define the color and rule for spot and side display.
+* For each card, the user can define the data which will be use as threshold value.
+* User can define the content show in each card or spot. 
+* The content in the card can be divided into three catelog: Caption, data and information.
+	Caption: The title for each sub category.
+	data: Bind the data in the metrics tag, the key for identify which data should be bind to the card is through the location text box. Location for each data should be unique.
+	Information: Provide a option to input plain text.
+
+Release Update - May 17, 2018
+* Draw circle when data received
+* add link for card item 
