@@ -1,7 +1,7 @@
 {
   "name": "worldmap-panel",
   "version": "1.0.0",
-  "description": "Worldmap Panel Plugin for Grafana",
+  "description": "Worldmap Card Panel Plugin for Grafana",
   "main": "src/module.js",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",

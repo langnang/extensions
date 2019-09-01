@@ -120,19 +120,104 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
   series: any;
   data: any;
   mapCenterMoved: boolean;
+  cardTypes: any;
+  fontCalc: any;
 
   /** @ngInject **/
   constructor($scope, $injector, contextSrv) {
     super($scope, $injector);
-
+    this.cardTypes = [
+      {
+        text: "Caption",
+        value: "caption"
+      },
+      {
+        text: "Data",
+        value: "data"
+      },
+      {
+        text: "Information",
+        value: "info"
+      }
+    ];
+    this.fontCalc = [
+      {
+        text: "60%",
+        value: "0.6vw"
+      },
+      {
+        text: "70%",
+        value: "0.8vw"
+      },
+      {
+        text: "80%",
+        value: "1vw"
+      },
+      {
+        text: "100%",
+        value: "1.4vw"
+      },
+      {
+        text: "110%",
+        value: "1.6vw"
+      },
+      {
+        text: "120%",
+        value: "1.8vw"
+      },
+      {
+        text: "130%",
+        value: "2vw"
+      },
+      {
+        text: "140%",
+        value: "2.2vw"
+      },
+      {
+        text: "150%",
+        value: "2.4vw"
+      },
+      {
+        text: "160%",
+        value: "2.6vw"
+      },
+      {
+        text: "180%",
+        value: "3vw"
+      },
+      {
+        text: "200%",
+        value: "3.4vw"
+      },
+      {
+        text: "220%",
+        value: "3.8vw"
+      },
+      {
+        text: "230%",
+        value: "4vw"
+      }
+    ];
     _.defaults(this.panel, panelDefaults);
 
     this.dataFormatter = new DataFormatter(this);
 
-    this.events.on("init-edit-mode", this.onInitEditMode.bind(this));
+    this.events.on("init-edit-mode", () => {
+      this.addEditorTab(
+        "Baidumap",
+        "public/plugins/grafana-baidumap-card-panel/partials/editor.html",
+        2
+      );
+      this.addEditorTab(
+        "WISE-PaaS",
+        "public/plugins/grafana-baidumap-card-panel/partials/WISE-PaaS.html",
+        3
+      );
+    });
     this.events.on("data-received", this.onDataReceived.bind(this));
-    this.events.on("panel-teardown", this.onPanelTeardown.bind(this));
-    this.events.on("data-snapshot-load", this.onDataSnapshotLoad.bind(this));
+    this.events.on("panel-teardown", this.render.bind(this));
+    this.events.on("data-snapshot-load", this.render.bind(this));
+    this.events.on("panel-initialized", this.render.bind(this));
 
     this.loadLocationDataFromFile();
   }
@@ -179,7 +264,7 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
       this.panel.locationData !== "json result"
     ) {
       $.getJSON(
-        "public/plugins/grafana-worldmap-panel/data/" +
+        "public/plugins/grafana-worldmap-card-panel/data/" +
           this.panel.locationData +
           ".json"
       ).then(this.reloadLocations.bind(this));
@@ -197,20 +282,6 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
     }
     this.render();
   }
-
-  onInitEditMode() {
-    this.addEditorTab(
-      "Baidumap",
-      "public/plugins/grafana-baidumap-panel/partials/editor.html",
-      2
-    );
-    this.addEditorTab(
-      "WISE-PaaS",
-      "public/plugins/grafana-baidumap-panel/partials/WISE-PaaS.html",
-      3
-    );
-  }
-
   onDataReceived(dataList) {
     console.log(dataList);
     if (!dataList || dataList[0].type !== "table") {
@@ -218,6 +289,7 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
     }
 
     let data: any = [],
+      locationList: any = [],
       latKey: number,
       lngKey: number;
     dataList[0].columns.map((v, k) => {
@@ -233,6 +305,7 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
 
     dataList[0].rows.map(rv => {
       data.push([parseFloat(rv[lngKey]), parseFloat(rv[latKey])]);
+      locationList.push(parseFloat(rv[lngKey]) + "_" + parseFloat(rv[latKey]));
     });
 
     // console.log(data);
@@ -255,6 +328,7 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
     //   this.dataFormatter.setValues(data);
     // }
     this.data = data;
+    this.panel.locationList = locationList;
 
     // this.updateThresholdData();
 
@@ -315,6 +389,65 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
   }
   setZoom() {
     this.map.setZoom(parseInt(this.panel.initialZoom) || 1);
+  }
+  addCard() {
+    var newCardData = {
+      title: "Title",
+      location: "",
+      circleColor: "rgba(90, 200, 250, 0.8)",
+      thresholdsOption: false,
+      thresholdsValue: "",
+      thresholdsData: "",
+      thresholdsDataTag: "",
+      thresholdstmp: [],
+      thresholdsIndex: 0,
+      link: "",
+      sideDisplay: true,
+      sideContent: "",
+      data: [],
+      cardItems: []
+    };
+    this.panel.cards.push(newCardData);
+    this.refresh();
+  }
+
+  removeCard($index) {
+    this.panel.cards.splice($index, 1);
+    this.refresh();
+  }
+
+  addCardItem($index) {
+    var newCardItem = {
+      name: "item title",
+      value: null,
+      dataIndex: null,
+      cardData: null,
+      type: "caption",
+      bgColor: "rgba(30, 30, 30, 0.8)",
+      color: "#00FFFF",
+      link: "",
+      dataTag: ""
+    };
+    this.panel.cards[$index].cardItems.push(newCardItem);
+    this.refresh();
+  }
+
+  deleteCardItem(pindex, index) {
+    this.panel.cards[pindex].cardItems.splice(index, 1);
+    this.render();
+  }
+  addLinked() {
+    var newLinkData = {
+      cityName: "",
+      detailName: "",
+      httpUrl: ""
+    };
+    this.panel.linkData.push(newLinkData);
+    this.refresh();
+  }
+  removeLink($index) {
+    this.panel.linkData.splice($index, 1);
+    this.refresh();
   }
   link(scope, elem, attrs, ctrl) {
     ctrl.events.on("render", () => {
