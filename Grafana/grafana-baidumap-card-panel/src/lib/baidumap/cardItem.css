@@ -1,6 +1,11 @@
 .BMap_bubble_content table {
     width: 100%;
+    color: #ffffff;
+    font-size: 14px;
+    table-layout: fixed;
 }
+
+.BMap_bubble_content tr>td {}
 
 .BMap_bubble_content tr>td:nth-child(1) {
     text-align: left;
@@ -8,4 +13,8 @@
 
 .BMap_bubble_content tr>td:nth-child(2) {
     text-align: right;
+    min-width: 50%;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
 }

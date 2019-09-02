@@ -6,10 +6,10 @@
   "info": {
     "description": "Baidu Map Card panel for Grafana. Displays time series data or geohash data from Elasticsearch overlaid on a world map.",
     "author": {
-      "name": "Grafana Labs",
+      "name": "Advantech",
       "url": "https://grafana.com"
     },
-    "keywords": ["worldmap", "panel"],
+    "keywords": ["baidumap", "panel"],
     "logos": {
       "small": "images/worldmap_logo.svg",
       "large": "images/worldmap_logo.svg"

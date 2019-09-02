@@ -9,4 +9,10 @@ import "./map.baidu.js";
 export default window.BMap;
 // @ts-ignore
 export const BMap_Symbol_SHAPE_CIRCLE = window.BMap_Symbol_SHAPE_CIRCLE;
+// @ts-ignore
+export const BMAP_ANCHOR_TOP_LEFT = window.BMAP_ANCHOR_TOP_LEFT;
+// @ts-ignore
+export const BMAP_NAVIGATION_CONTROL_SMALL =
+  // @ts-ignore
+  window.BMAP_NAVIGATION_CONTROL_SMALL;
 export const createImageBitmap = window.createImageBitmap;

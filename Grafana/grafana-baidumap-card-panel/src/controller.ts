@@ -49,9 +49,9 @@ const panelDefaults = {
   hideEmpty: false,
   hideZero: false,
   stickyLabels: false,
-  ocean: "#ADADAD",
+  ocean: "#BEDBF9",
   boundaryStroke: "#ADADAD",
-  boundaryFill: "#2B2B2C",
+  boundaryFill: "#F5F5F5",
   countryBoundary: "#ADADAD",
   oceanEnable: true,
   boundaryEnable: true,
@@ -284,7 +284,8 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
   }
   onDataReceived(dataList) {
     console.log(dataList);
-    if (!dataList || dataList[0].type !== "table") {
+    if (dataList.length <= 0 || dataList[0].type !== "table") {
+      this.render();
       return;
     }
 
@@ -456,9 +457,9 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
     });
 
     function render() {
-      if (!ctrl.data) {
-        return;
-      }
+      // if (!ctrl.data) {
+      //   return;
+      // }
 
       const mapContainer = elem.find(".mapcontainer");
 
@@ -491,7 +492,7 @@ export default class BaiduMapCtrl extends MetricsPanelCtrl {
       // map.addControl(new BMap.NavigationControl());
       // console.log(ctrl.map);
       // } else {
-      ctrl.BaiduMap.refresh();
+      // ctrl.BaiduMap.refresh();
       // }
 
       // setTimeout(() => {
