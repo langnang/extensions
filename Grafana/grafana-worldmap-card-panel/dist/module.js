@@ -1,2 +1,0 @@
-"use strict";System.register(["app/plugins/sdk","./worldmap_ctrl"],function(a,b){var c,d;return{setters:[function(a){c=a.loadPluginCss},function(a){d=a["default"]}],execute:function(){c({dark:"plugins/grafana-worldmap-card-panel/css/worldmap.dark.css",light:"plugins/grafana-worldmap-card-panel/css/worldmap.light.css"}),a("PanelCtrl",d)}}});
-//# sourceMappingURL=module.js.map
